@@ -33,15 +33,15 @@ def change(repo):
     oldstr = '$find_str'
     newstr = '$change_str'
 
-    for dirpath, dirname, filename in os.walk(drc):#Getting a list of the full paths of files
+    for dirpath, dirname, filename in os.walk(drc):
         for fname in filename:
-            path = os.path.join(dirpath, fname) #Joining dirpath and filenames
-            strg = open(path,encoding = "ISO-8859-1").read() #Opening the files for reading only
-            if re.search(pattern, strg):#If we find the pattern ....
-                strg = strg.replace(oldstr, newstr) #We will create the replacement condistion
-                f = open(path, 'w') #We open the files with the WRITE option
-                f.write(strg) # We are writing the the changes to the files
-                f.close() #Closing the files 
+            path = os.path.join(dirpath, fname) 
+            strg = open(path,encoding = "ISO-8859-1").read()
+            if re.search(pattern, strg):
+                strg = strg.replace(oldstr, newstr) 
+                f = open(path, 'w')
+                f.write(strg) 
+                f.close() 
 
     commit(drc) 
     branch(drc)              
